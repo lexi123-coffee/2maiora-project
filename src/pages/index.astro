@@ -1,11 +1,510 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import MenuItem from '../components/MenuItem.astro';
+import MenuItemRight from '../components/MenuRight.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const secciones = [
+    {
+    tituloIzquierda: "PASTEL TAMAÑO GRANDE",
+    centro: {
+        title: "TAMAÑOS DE NUESTROS PASTELES:",
+        sub_item_title: "Pedidos a domicilio:",
+        sub_item_price: "$15",
+        rows: [
+            { title: "Ingredientes extra:", price: "$" },
+            { title: "Whatsapp: 351-175-40-97", price: "" }
+        ]
+    },
+    precioIzquierda: "$",
+    imagenIzquierda: "/images/james.jpg",
+    tituloDerecha: "PASTEL TAMAÑO 3/4's",
+    precioDerecha: "$",
+    imagenDerecha: "/images/thanks.jpg",
+    extra: {
+        title: "Especialidad de la casa",
+        sub_item_title: "Ven y disfruta de nuestros ricos platillos desde:",
+        sub_item_price: "$70",
+        rows: [
+            { title: "Ingredientes extra:", price: "$15" },
+            { title: "Bebidas desde:", price: "$45" }
+        ]
+    }
+  },
+
+  {
+    tituloIzquierda: "PASTEL TAMAÑO CHICO",
+    centro : {
+        title: "TAMAÑOS DE NUESTROS PASTELES:",
+        sub_item_title: "Pedidos a domicilio:",
+        sub_item_price: "$15",
+        rows: [
+            { title: "Botellas de tequila desde:", price: "$" },
+            { title: "Whatsapp: 351-175-40-97", price: "" }
+        ]
+    },
+    precioIzquierda: "$",
+    imagenIzquierda: "/images/vogue.jpg",
+    tituloDerecha: "PASTEL TAMAÑO MINI",
+    precioDerecha: "$",
+    imagenDerecha: "/images/jamon.jpg"
+  },
+
+  {
+    tituloIzquierda: "ESPECIAL 'BANANA'",
+        centro : {
+            title: "DULCES MOMENTOS, GRANDES RECUERDOS",
+            sub_item_title: "Pedidos a domicilio",
+            sub_item_price: "$",
+            rows: [
+                { title: "Botellas de tequila desde:", price: "$" },
+                { title: "Refrescos desde:", price: "$" }
+            ]
+        },
+    precioIzquierda: "$",
+    imagenIzquierda: "/images/minion.jpg",
+    tituloDerecha: "FRAPPÉ ALGODÓN DE AZÚCAR",
+    precioDerecha: "$",
+    imagenDerecha: "/images/colors.jpg"
+  },
+
+  {
+    tituloIzquierda: "FRAPPÉ DE CARLOTA DE LIMÓN",
+        centro : {
+            title: "EL SABOR QUE ACOMPAÑA TUS MEJORES MOMENTOS",
+            sub_item_title: "Pedidos a domicilio:",
+            sub_item_price: "$",
+            rows: [
+                { title: "Botellas de tequila desde:", price: "$" },
+                { title: "Reservaciones:", price: "$" }
+            ]
+        },
+    precioIzquierda: "$",
+    imagenIzquierda: "/images/nueva.jpg",
+    tituloDerecha: "LATTE BERRY MATCHA",
+    precioDerecha: "$",
+    imagenDerecha: "/images/rose.jpg"
+  },
+
+   {
+    tituloIzquierda: "Sección 5 - Platillo A",
+    centro : {
+        title: "EL TOQUE DULCE DE TU DIA",
+        sub_item_title: "Pedidos a domicilio:",
+        sub_item_price: "$",
+        rows: [
+            { title: "Bebidas desde:", price: "$" },
+            { title: "Botellas de tequila desde:", price: "$" }
+        ]
+    },
+    precioIzquierda: "$",
+    imagenIzquierda: "/images/carlosvv.png",
+    tituloDerecha: "ORANGE COFFEE",
+    precioDerecha: "$",
+    imagenDerecha: "/images/orangecoffee.jpg"
+  },
+
+  {
+    tituloIzquierda: "SODA ITALIANA (DIFERENTES SABORES)",
+        centro : {
+            title: "TU LUGAR FAVORITO PARA CONSENTIRTE",
+            sub_item_title: "Pedidos a domicilio",
+            sub_item_price: "$",
+            rows: [
+                { title: "Refrescos desde:", price: "$" },
+                { title: "Whatsapp: 351-175-40-97", price: "" }
+            ]
+        },
+    precioIzquierda: "$",
+    imagenIzquierda: "/images/sodaitalia.jpg",
+    tituloDerecha: "CHEESECAKE DE FRUTOS ROJOS",
+    precioDerecha: "$",
+    imagenDerecha: "/images/cake.jpg"
+  },
+
+  {
+    tituloIzquierda: "ALFAJOR TRADICIONAL",
+        centro : {
+            title: "DULCE, ELEGANTE Y AUTÉNTICO",
+            sub_item_title: "Pedidos a domicilio:",
+            sub_item_price: "$",
+            rows: [
+                { title: "Bebidas desde:", price: "$" },
+                { title: "Botellas de tequila desde:", price: "$" }
+            ]
+        },
+    precioIzquierda: "$",
+    imagenIzquierda: "/images/alfajor.jpg",
+    tituloDerecha: "ALFAJOR CHOCOLATE BLANCO",
+    precioDerecha: "$",
+    imagenDerecha: "/images/ab.jpg"
+  },
+
+  {
+    tituloIzquierda: "ALFAJOR DE OREO",
+        centro : {
+                title: "CADA POSTRE CUENTA UNA HISTORIA",
+                sub_item_title: "Pedidos a domicilio:",
+                sub_item_price: "$",
+                rows: [
+                    { title: "Refrescos desde:", price: "$" },
+                    { title: "Reservaciones:", price: "$" }
+                ]
+            },
+    precioIzquierda: "$",
+    imagenIzquierda: "/images/another.jpg",
+    tituloDerecha: "CREPAS Y HOT CAKES",
+    precioDerecha: "$",
+    imagenDerecha: "/images/tres.jpg"
+  },
+
+  {
+    tituloIzquierda: "MEZCALITA DE MARACUYÁ (DIFERENTES SABORES)",
+        centro : {
+                title: "PEQUEÑOS ANTOJOS, GRANDES MOMENTOS",
+                sub_item_title: "Pedidos a domicilio:",
+                sub_item_price: "$",
+                rows: [
+                    { title: "Bebidas desde:", price: "$" },
+                    { title: "Botellas de tequila desde:", price: "$" }
+                ]
+            },
+    precioIzquierda: "$",
+    imagenIzquierda: "/images/maracuya.jpg",
+    tituloDerecha: "BEBIDA ICE",
+    precioDerecha: "$",
+    imagenDerecha: "/images/funny.jpg"
+  },
+
+  {
+    tituloIzquierda: "HAMBURGUESA DE RES",
+        centro : {
+                title: "BUEN AMBIENTE, MEJOR COMIDA",
+                sub_item_title: "Pedidos a domicilio:",
+                sub_item_price: "$",
+                rows: [
+                    { title: "Refrescos desde:", price: "$" },
+                    { title: "Whatsapp: 351-175-40-97", price: "" }
+                ]
+            },
+    precioIzquierda: "$",
+    imagenIzquierda: "/images/hamburguesa.jpg",
+    tituloDerecha: "Sección 2 - Platillo B",
+    precioDerecha: "$",
+    imagenDerecha: "/images/cebolla.jpg"
+  },
+
+  {
+    tituloIzquierda: "Sección 11 - Platillo A",
+        centro : {
+                title: "SAZÓN QUE SÍ ENAMORA",
+                sub_item_title: "Pedidos a domicilio:",
+                sub_item_price: "$",
+                rows: [
+                    { title: "Bebidas desde:", price: "$" },
+                    { title: "Botellas de tequila desde:", price: "$" }
+                ]
+            },
+    precioIzquierda: "$",
+    imagenIzquierda: "/images/burro.jpg",
+    tituloDerecha: "ARRACHERA Y POLLO A LA PLANCHA",
+    precioDerecha: "$",
+    imagenDerecha: "/images/arrozito.jpg"
+  },
+
+  {
+    tituloIzquierda: "OMELET, CON INGREDIENTES AL GUSTO",
+        centro : {
+                title: "LA COCINA QUE CONQUISTA",
+                sub_item_title: "Pedidos a domicilio:",
+                sub_item_price: "$",
+                rows: [
+                    { title: "Refrescos desde:", price: "$" },
+                    { title: "Reservaciones:", price: "$" }
+                ]
+            },
+    precioIzquierda: "$",
+    imagenIzquierda: "/images/caldo.jpg",
+    tituloDerecha: "¡ARMA TU PLATILLO!",
+    precioDerecha: "$",
+    imagenDerecha: "/images/totopo.jpg"
+  },
+
+  {
+    tituloIzquierda: "Sección 13 - Platillo A",
+        centro : {
+                title: "SABOR QUE UNE FAMILIAS",
+                sub_item_title: "Pedidos a domicilio:",
+                sub_item_price: "$",
+                rows: [
+                    { title: "Bebidas desde:", price: "$" },
+                    { title: "Botellas de tequila desde:", price: "" }
+                ]
+            },
+    precioIzquierda: "$",
+    imagenIzquierda: "/images/taquitos.jpg",
+    tituloDerecha: "Sección 2 - Platillo B",
+    precioDerecha: "$",
+    imagenDerecha: "/images/charola.jpg"
+  },
+
+]
 ---
+<Layout title="Menú Digital Maiora">
+  <main class="menu-slider" id="main-container">
+    <button id="fullscreen-btn" class="fs-button" title="Pantalla Completa">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+        </svg>
+    </button>
 
-<Layout>
-	<Welcome />
+       {secciones.map((sec, index) => (
+           <div class={`menu-page ${index === 0 ? 'active' : ''}`}>
+              <div class="grid-item">
+                   <div class="left-box">
+                       <MenuItem
+                         title={sec.tituloIzquierda}
+                         price={sec.precioIzquierda}
+                         image={sec.imagenIzquierda}
+                       />
+                   </div>
+              </div>
+
+                <div class="grid-item item-teal">
+                    <div class="top-content">
+                       <h2>{sec.centro?.title || "Especialidad"}</h2>
+                        <ul>
+                           <li><span>{sec.centro?.sub_item_title || "Ven y disfruta de nuestros ricos platillos desde:"}</span> <span>{sec.centro?.sub_item_price || "$75"}</span></li>
+                        </ul>
+                   </div>
+
+                   <div class="mid-image logo-container">
+                       <div class="logo-wrapper">
+                            <img src="/images/remove.png" alt="Maiora logo" class="masked-logo" />
+                      </div>
+                  </div>
+                   <div class="bottom-content">
+                       <ul>
+                           {sec.centro?.rows?.map((row) => (
+                            <li>
+                                <span>{row.title}</span>
+                                <b>{row.price}</b>
+                            </li>
+                           ))}
+                       </ul>
+                   </div>
+                </div>
+
+               <div class="grid-item">
+                   <div class="right-box">
+                       <MenuItemRight
+                          title={sec.tituloDerecha}
+                          price={sec.precioDerecha}
+                          image={sec.imagenDerecha}
+                        />
+                   </div>
+               </div>
+           </div>
+        ))}
+    </main>
 </Layout>
+
+<style>
+    .fs-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.4);
+      color: #C5A059;
+      border: 1px solid rgba(197, 160, 89, 0.5);
+      padding: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0.4;
+      transition: opacity 0.3s;
+    }
+
+   .menu-slider {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background-color: #171313;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .menu-page {
+      width: 95vw;
+      height: 85vh;
+      max-width: 1800px;
+      display: grid;
+      grid-template-columns: 1.6fr 1.4fr 1.6fr;
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .menu-page.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+      transition: opacity 0.5s linear, transform 0.5s ease-out;
+      will-change: opacity, transform;
+    }
+
+    .active .grid-item,
+    .active .logo-wrapper,
+    .active .top-content,
+    .active .bottom-content {
+      animation: none !important;
+    }
+
+    .grid-item {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .grid-item:nth-child(1),
+    .grid-item:nth-child(2) {
+      border-right: 1px solid rgba(197, 160, 89, 0.25);
+    }
+
+    :global(.left-box),
+    :global(.right-box) {
+        flex: 1;
+        display: flex;
+    }
+
+    :global(.left-box > *),
+    :global(.right-box > *) {
+        flex: 1;
+    }
+
+    .item-teal {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      background: #171313;
+      color: white;
+      height: 100%;
+      padding: 1vh 0.5vw;
+    }
+
+    .top-content, .bottom-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 1.5vw 0.5vw;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+    }
+
+    .logo-wrapper {
+      padding: 3vh;
+      border-radius: 16px;
+      background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
+    }
+
+    .masked-logo {
+      width: 100%;
+      max-height: 35vh;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.6))
+        drop-shadow(0 0 20px rgba(200,200,200,0.4));
+    }
+
+    h2 {
+      font-size: 1.5vw;
+      text-align: center;
+      line-height: 1.2;
+      color: #C5A059;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.5vw;
+      border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+      padding: 0.5vh 0.2vw;
+      color: #E5D7C3;
+    }
+
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .tv-mode * {
+      animation: none !important;
+      transition: none !important;
+    }
+
+</style>
+
+<script>
+   const slides = document.querySelectorAll('.menu-page');
+   const container = document.getElementById('main-container');
+   const fsBtn = document.getElementById('fullscreen-btn');
+
+   let currentSlide = 0;
+   let lastTime = 0;
+   const INTERVAL = 11000;
+
+   const isTV = /TV|Tizen|WebOS|SmartTV/i.test(navigator.userAgent);
+    if (isTV) {
+      document.body.classList.add('tv-mode');
+    }
+
+    function updateSlides() {
+        slides.forEach((s, i) => {
+            if (i === currentSlide) {
+                s.classList.add('active');
+            } else {
+                s.classList.remove('active');
+            }
+        });
+    }
+
+    function loop(timestamp) {
+        if (!lastTime) lastTime = timestamp;
+
+        if (timestamp - lastTime > INTERVAL) {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlides();
+            lastTime = timestamp;
+        }
+
+        requestAnimationFrame(loop);
+    }
+
+    requestAnimationFrame(loop);
+
+    fsBtn.addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+            container.requestFullscreen().catch(() => {});
+        } else {
+            document.exitFullscreen();
+        }
+    });
+
+    let cursorTimeout;
+    container.addEventListener('mousemove', () => {
+        container.style.cursor = 'default';
+        clearTimeout(cursorTimeout);
+        cursorTimeout = setTimeout(() => {
+             container.style.cursor = 'none';
+        }, 2000);
+    });
+
+</script>
+
